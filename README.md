@@ -30,11 +30,9 @@ npm run build:prod
     ```
 4. Remove source map files from files in ```dist``` directory.
 5. Copy files inside ```dist``` directory to ```prod``` directory on your server.
-6. To start your app for production, run the following commands:
-
+6. ```cd``` to the root of your project directory on your server. You have to make sure that you are not inside the ```prod``` directory.
+7. To start your app for production, run the following command:
     ```sh
-    # %projectname% refers to the full path to your root project directory, not %projectname%/prod
-    cd %projectname%
     NODE_ENV=production pm2 start prod/server.js
     ```
 
