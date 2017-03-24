@@ -2,4 +2,4 @@
 /dist/
 /lib/
 /yarn.lock
-*.log
+*.log.*

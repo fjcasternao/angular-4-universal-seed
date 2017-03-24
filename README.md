@@ -9,12 +9,31 @@ npm run start
 * Wait for the build to finish
 * Terminal 2: ```npm run server```
 
-## Prod mode
-Includes AoT
+## Production (deployed on a live server)
+Follow these steps to deploy your app to a live server.
+
+This build includes AoT
 ```sh
 npm run build:prod
-npm run server
 ```
+### Deploying to Linux
+1. Install NodeJS if you haven't already.
+2. Run the following command:
+    ```sh
+    npm install pm2 -g
+    ```
+3. Setup directory structure for production:
+    ```sh
+    mkdir %projectname%
+    cd %projectname%
+    mkdir prod
+    ```
+4. Remove source map files from files in ```dist``` directory.
+5. Copy files inside ```dist``` directory to ```prod``` directory on your server.
+6. To start your app for production, run the following command:
+    ```sh
+    NODE_ENV=production pm2 start prod/server.js
+    ```
 
 Based on https://github.com/robwormald/ng-universal-demo
 
