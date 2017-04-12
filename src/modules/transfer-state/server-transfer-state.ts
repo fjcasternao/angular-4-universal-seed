@@ -21,9 +21,9 @@ export class ServerTransferState extends TransferState {
         data: {}
       });
 
-      const head = document.children[0].children[0];
+      const head = document.children[1].children[0];
       if (head.name !== 'head') {
-        throw new Error('Please have <head> as the first element in your document');
+        throw new Error('Please have <head> as the first element inside <html>');
       }
 
       const script = renderer.createElement('script');
