@@ -39,9 +39,9 @@ ROUTES.forEach(route => {
   });
 });
 
-app.get('/data', (req, res) => {
+app.get('/users', (req, res) => {
   console.time(`GET: ${req.originalUrl}`);
-  res.json(api.getData());
+  res.json(api.getUsers());
   console.timeEnd(`GET: ${req.originalUrl}`);
 });
 
