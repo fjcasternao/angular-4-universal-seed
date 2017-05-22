@@ -40,9 +40,30 @@ ROUTES.forEach(route => {
 });
 
 app.get('/users', (req, res) => {
-  console.time(`GET: ${req.originalUrl}`);
-  res.json(api.getUsers());
-  console.timeEnd(`GET: ${req.originalUrl}`);
+
+  let users = api.getUsers();
+  let userList = [];
+
+  users.forEach( user => {
+    userList.push({
+      name: user.name,
+      index: user.index,
+      isActive: user.isActive,
+      balance: user.balance,
+      gender: user.gender
+    })
+  });
+  res.json(userList);
+});
+
+app.get('/users/:user_id', (req, res) => {
+  let users = api.getUsers();
+  let requestedUser = users.filter(user => user.index == req.params.user_id)[0];
+  if( requestedUser ){
+    res.json(requestedUser)
+  } else {
+    res.status(400).send('No user matching search criteria');
+  }
 });
 
 app.listen(port, "0.0.0.0", () => {
