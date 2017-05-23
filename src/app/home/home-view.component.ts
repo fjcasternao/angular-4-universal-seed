@@ -1,21 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { TransferHttp } from '../../modules/transfer-http/transfer-http';
 import { Observable } from 'rxjs/Observable';
+import { UserSummary } from "../app.entities";
+
 
 @Component({
-	selector: 'home-view',
-	template: `<h3>awdawdawd</h3>`
+  selector: 'home-view',
+  templateUrl: 'home-view.template.html'
 })
+
 export class HomeView {
-  public subs: string;
+  public usersList: UserSummary[];
+  public setClickedRow: Function;
+  selectedUser : UserSummary;
 
-  constructor(private http: TransferHttp) {}
+  private sub: any;
 
-  /*ngOnInit() {
-    this.http.get('http://localhost:8000/data').subscribe(res => {
-      this.subs = `${res.greeting} ${res.name}`;
+  constructor(private http: TransferHttp) {
+    this.setClickedRow = function (index) {
+      this.selectedUser = this.usersList[index];
+    }
+  }
+
+  ngOnInit() {
+    this.sub = this.http.get('http://localhost:8000/users/').subscribe(res => {
+      this.usersList = res as UserSummary[];
     }, err => {
       console.log(err);
     });
-  }*/
+  }
+
+    //Destroy subscriptions
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
 }

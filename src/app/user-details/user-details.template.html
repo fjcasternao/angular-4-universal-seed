@@ -1,0 +1,11 @@
+<div class="card text-center" *ngIf="fullUser">
+    <h3>{{fullUser.name}}</h3>
+    <div class="col-xs-12" >
+        <table class="table table-striped">
+            <tr *ngFor="let key of fullUser | keys">
+                <td>{{key}}</td>
+                <td>{{fullUser[key]}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

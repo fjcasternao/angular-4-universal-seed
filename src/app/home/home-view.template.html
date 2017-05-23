@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="col-md-offset-1 col-md-6">
+        <h3>User List</h3>
+        <div class=row>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Active</th>
+                        <th>Balance</th>
+                        <th>Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of usersList; let i = index" (click)="setClickedRow(i)">
+                        <td *ngFor="let key of user | keys">{{user[key]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <user-details *ngIf="selectedUser" [user]="selectedUser"></user-details>
+    </div>
+</div>

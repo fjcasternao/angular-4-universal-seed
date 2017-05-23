@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeView } from './home/home-view.component';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
+import { KeysPipe } from "./app.pipes";
+import { UserDetails } from "./user-details/user-details.component";
 
 
 @NgModule({
@@ -18,7 +20,7 @@ import { TransferHttpModule } from '../modules/transfer-http/transfer-http.modul
       { path: 'lazy', loadChildren: './+lazy/lazy.module#LazyModule'}
     ])
 	],
-	declarations: [ AppComponent, HomeView ],
+	declarations: [ AppComponent, HomeView, KeysPipe, UserDetails ],
   exports: [ AppComponent ]
 })
 export class AppModule {}
